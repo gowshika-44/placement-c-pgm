@@ -1,0 +1,22 @@
+-- create a table
+CREATE TABLE employeedetail (
+  empid INTEGER PRIMARY KEY,
+  empname TEXT NOT NULL,
+  empsalary INTEGER(10),
+  bonus INTEGER(9),
+  projectdept char(10)
+);
+-- insert some values
+INSERT INTO employeedetail VALUES (1, 'john', 27000, 400,'finance');
+INSERT INTO employeedetail VALUES (2, 'Joanna', 2000, 300, 'telecom');
+INSERT INTO employeedetail VALUES (3, 'michael', 40000, 600, 'eng');
+INSERT INTO employeedetail VALUES (4, 'mike', 50000, 700, 'eng');
+INSERT INTO employeedetail VALUES (5, 'robert',25000,NULL ,'telecom');
+INSERT INTO employeedetail VALUES (6, 'robert',20000, 300, 'telecom');
+INSERT INTO employeedetail VALUES (7, 'peter', 30000, NULL, 'eng');
+INSERT INTO employeedetail VALUES (8, 'carl', 27000, NULL, 'finance');
+-- fetch some values
+
+SELECT projectdept, round(avg(empsalary))AVGSAL,sum(bonus)totalbonus 
+from employeedetail
+GROUP BY projectdept having avg(empsalary)>20000 and sum(bonus)>500;
